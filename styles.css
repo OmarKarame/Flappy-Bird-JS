@@ -8,10 +8,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: aquamarine;
 }
 
 #game-screen {
-  width: 460px;
-  height: 844px;
+  background-color: white;
   border: 3px solid black;
 }
