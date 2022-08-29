@@ -1,4 +1,5 @@
 import Bird from './bird.js';
+import InputHandler from './input.js';
 
 let canvas = document.querySelector("#game-screen");
 let context = canvas.getContext("2d");
@@ -8,10 +9,12 @@ const gameWidth = canvas.width;
 const gameHeight = canvas.height;
 
 // time info
-let initialTime = 0;
+let initialTime = 1;
 
 // creates a new object (Bird) called flappy
 let flappy = new Bird(gameWidth, gameHeight);
+
+new InputHandler(flappy);
 
 // creates a game loop to update the screen continuously
 function gameLoop(finalTime){
@@ -21,20 +24,15 @@ function gameLoop(finalTime){
     // setting the new initial time to be last frame's final time
     initialTime = finalTime;
 
-    // calls the draw function on flappy
-    flappy.draw(context);
-
     //clears screen every frame
     context.clearRect(0, 0, gameWidth, gameHeight);
 
     flappy.update(deltaTime);
     flappy.draw(context);
 
-
     requestAnimationFrame(gameLoop);
 }
-
-gameLoop();
+  gameLoop();
 
 
 
