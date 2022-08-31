@@ -32,7 +32,8 @@ function gameLoop(finalTime){
 
     requestAnimationFrame(gameLoop);
 }
-  gameLoop();
+
+gameLoop();
 
 
 
