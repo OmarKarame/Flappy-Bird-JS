@@ -36,9 +36,9 @@ function () {
   _createClass(Tubes, [{
     key: "draw",
     value: function draw(context) {
+      context.fillStyle = "green";
       context.fillRect(this.position.x, this.position.topY, this.width, this.topHeight);
       context.fillRect(this.position.x, this.position.bottomY, this.width, this.bottomHeight);
-      context.fill();
     }
   }, {
     key: "update",

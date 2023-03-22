@@ -10,6 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var canvas = document.querySelector("#game-screen");
 var context = canvas.getContext("2d");
+var context2 = canvas.getContext("2d");
 var paused = false;
 var score = 0;
 var highScore = 0; // game dimensions
@@ -53,7 +54,7 @@ function gameLoop(finalTime) {
   initialTime = finalTime; //clears screen every frame
 
   context.clearRect(0, 0, gameWidth, gameHeight);
-  tubes.draw(context);
+  tubes.draw(context2);
   flappy.draw(context); // create collision detection between flappy and tubes
 
   if ((flappy.position.y <= tubes.topHeight || flappy.position.y + flappy.radius >= tubes.topHeight + tubes.gap) && (flappy.position.x + flappy.radius >= tubes.position.x && flappy.position.x + flappy.radius <= tubes.position.x + tubes.width || flappy.position.x <= tubes.position.x + tubes.width && flappy.position.x >= tubes.position.x + tubes.width)) {

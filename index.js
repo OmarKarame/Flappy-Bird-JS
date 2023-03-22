@@ -4,6 +4,7 @@ import InputHandler from './input.js';
 
 let canvas = document.querySelector("#game-screen");
 let context = canvas.getContext("2d");
+let context2 = canvas.getContext("2d");
 let paused = false;  
 let score = 0;
 let highScore = 0;
@@ -58,7 +59,7 @@ function gameLoop(finalTime){
     //clears screen every frame
     context.clearRect(0, 0, gameWidth, gameHeight);
 
-    tubes.draw(context);
+    tubes.draw(context2);
     flappy.draw(context);
 
     // create collision detection between flappy and tubes

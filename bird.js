@@ -27,6 +27,7 @@ export default class Bird{
     // This draws the item (in this case the item being drawn is a circle)
     draw(context) {
         context.beginPath()
+        context.fillStyle = "yellow";
         context.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false);
         context.fill();
     }
