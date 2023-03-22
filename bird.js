@@ -4,11 +4,12 @@ export default class Bird{
         this.gameHeight = gameHeight;
 
         // Each new bird will have the same radius, velocity, gravity, and will be automatically falling
-        this.radius = 40;
+        this.radius = 25;
         this.velocity = 0;
         this.gravity = 6;
         this.isJumping = false;
         this.isFalling = true;
+        this.collision = false;
 
         // The bird will also be positiond in these coordinates
         this.position = {
@@ -37,28 +38,27 @@ export default class Bird{
        // This if statement runs when the bottom of the circle (the y coordinate which is at the circles center plus the radius)
        // It stops the bird from moving and ends the game
        if(this.position.y >= this.gameHeight - this.radius){
-        this.position.y = this.gameHeight - this.radius;
+            this.position.y = this.gameHeight - this.radius;
        }
        // This if statement checks if the bird is jumping
-       else if(this.isJumping){
-        // This statement checks if the velocity is positive (if it is then the bird is falling downwards so the velocity must be reset)
-        if (this.velocity > 0){
-            this.velocity = 0;
-        }
-        // The velocity then increases by 40 upwards (-40) until it reaches -150
-        this.velocity = this.velocity - 40;
-        this.isFalling = false;   
-        console.log(this.velocity);
-        // Once the velocity gets below -150 the jumping stops and the falling becomes true 
-        if(this.velocity < -150){
-            this.isJumping = false;
-            this.isFalling = true;
-        }
+       else if(this.isJumping && !this.collision){
+            // This statement checks if the velocity is positive (if it is then the bird is falling downwards so the velocity must be reset)
+            if (this.velocity > 0){
+                this.velocity = 0;
+            }
+            // The velocity then increases by 40 upwards (-40) until it reaches -150
+            this.velocity = this.velocity - 40;
+            this.isFalling = false;   
+            // Once the velocity gets below -150 the jumping stops and the falling becomes true 
+            if(this.velocity < -150){
+                this.isJumping = false;
+                this.isFalling = true;
+            }
        }
        // The bird falls at an increasing rate of velocity + 6 every game loop
        else if (this.isFalling){
-        this.velocity += this.gravity;
-        this.position.y += this.velocity / deltaTime;
+            this.velocity += this.gravity;
+            this.position.y += this.velocity / deltaTime;
        }
     }
 }
